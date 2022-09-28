@@ -1,0 +1,30 @@
+int t=2;
+int e=3;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(t,OUTPUT);
+  pinMode(e,INPUT);
+  pinMode(13,OUTPUT);
+}
+void loop()
+{
+digitalWrite(t,LOW);
+digitalWrite(t,HIGH);
+delayMicroseconds(1000);
+digitalWrite(t,LOW); 
+float dur=pulseIn(e,HIGH);
+float dis=(dur*0.0343)/2;
+if (dis<=200){
+  Serial.print("Door open");
+  delay(1000);
+}
+int p=digitalRead(4);
+if(p==1)
+{
+  digitalWrite(13,LOW);
+  Serial.println("Motion not detected");
+  delay(1000);
+}
+}
+ 
